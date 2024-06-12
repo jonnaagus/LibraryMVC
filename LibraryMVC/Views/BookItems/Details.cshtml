@@ -1,0 +1,36 @@
+﻿@model LibraryMVC.Models.BookItem
+
+@{
+    ViewData["Title"] = "Bokinformation";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <div class="card shadow-lg border-0 mt-4">
+        <div class="card-body bg-light">
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Titel</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+                <dt class="col-sm-3">Författare</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Writer)</dd>
+                <dt class="col-sm-3">Publikationsdatum</dt>
+                <dd class="col-sm-9">@Model.PublicationDate.ToShortDateString()</dd>
+                <dt class="col-sm-3">Tillgänglig</dt>
+                <dd class="col-sm-9">
+                    @{
+                        string availabilityIcon = Model.Available ? "✔️" : "❌";
+                    }
+                    @availabilityIcon
+                </dd>
+            </dl>
+            <div class="text-end mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.BookItemId" class="btn btn-primary">Ändra</a>
+                <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>

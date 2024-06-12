@@ -1,0 +1,151 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0445041e;
+    color: #333;
+    margin: 0;
+    padding: 0 0 60px;
+}
+
+.navbar {
+    background-color: #006400; /* Mörkgrön färg */
+    box-shadow: 0 4px 6px -1px rgba(0, 64, 0, 0.1); /* Skuggning */
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        color: #fff;
+        border: 1px solid #006400; /* Ram runt menylänkar */
+        border-radius: 5px;
+        margin: 10px; /* Mellanrum mellan länkar */
+        padding: 5px 10px;
+        box-shadow: 0 4px 6px -1px rgba(0, 64, 0, 0.1); /* Skuggning */
+        transition: color 0.3s, background-color 0.3s; /* Övergångseffekt för färg */
+    }
+
+        .navbar .nav-link:hover {
+            background-color: #006400;
+            border-color: #004d00;
+            color: #fff;
+        }
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+    .table thead {
+        background-color: #006400; /* Mörkgrön färg */
+        color: #fff;
+    }
+
+        .table thead th {
+            border: none;
+        }
+
+    .table tbody tr:hover {
+        background-color: #f0f0f0;
+    }
+
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-warning, .btn-info, .btn-light, .btn-dark {
+    background-color: #fff;
+    border-color: #006400;
+    color: #006400;
+    box-shadow: 0 4px 6px -1px rgba(0, 64, 0, 0.1); /* Skuggning */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Övergångseffekt för färg */
+}
+
+    .btn-primary:hover, .btn-secondary:hover, .btn-success:hover, .btn-danger:hover, .btn-warning:hover, .btn-info:hover, .btn-light:hover, .btn-dark:hover {
+        background-color: #006400;
+        border-color: #004d00;
+        color: #fff;
+    }
+
+.footer {
+    background-color: #fff;
+    color: rgba(0, 64, 0, 0.1);
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+}
+
+    .footer a {
+        color: #006400;
+    }
+
+        .footer a:hover {
+            color: #006400;
+        }
+
+.content-wrapper {
+    padding-bottom: 60px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%; /* Täcker hela bredden */
+}
+
+    .image-container img {
+        max-width: 100%;
+        height: auto; /* Håller bildens proportioner */
+    }
+
+/* Media Queries för mobilanpassning */
+@media (max-width: 768px) {
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        margin: 5px; /* Minskad marginal för mindre skärmar */
+        padding: 3px 5px;
+    }
+
+    .container {
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .table thead {
+        font-size: 14px; /* Mindre teckenstorlek för tabellhuvud */
+    }
+
+    .table tbody {
+        font-size: 12px; /* Mindre teckenstorlek för tabellinnehåll */
+    }
+
+    .btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-warning, .btn-info, .btn-light, .btn-dark {
+        padding: 8px 12px; /* Mindre padding för knappar */
+        font-size: 14px; /* Mindre teckenstorlek för knappar */
+    }
+
+    .footer {
+        padding: 15px 0;
+    }
+}

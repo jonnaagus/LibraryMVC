@@ -1,0 +1,55 @@
+﻿@model LibraryMVC.Models.LibraryMember
+
+@{
+    ViewData["Title"] = "Visa medlem";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white text-center">
+                    <h2>Visa medlem</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="GetMemberById" method="get">
+                        <div class="mb-3">
+                            <label for="memberSelect" class="form-label">Välj medlem</label>
+                            <select id="memberSelect" name="id" class="form-control">
+                                <option value="">Välj medlem</option>
+                                @foreach (var member in ViewBag.AllMembers)
+                                {
+                                    <option value="@member.LibraryMemberId">@member.FirstName @member.LastName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Visa</button>
+                            <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+                        </div>
+                    </form>
+
+                    @if (Model != null)
+                    {
+                        <div class="mt-4">
+                            <h4>Medlemsinformation</h4>
+                            <hr />
+                            <p><strong>Förnamn: </strong>@Model.FirstName</p>
+                            <p><strong>Efternamn: </strong>@Model.LastName</p>
+                            <p><strong>Mobilnummer: </strong>@Model.PhoneNumber</p>
+                            <p><strong>Emailadress: </strong>@Model.EmailAddress</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

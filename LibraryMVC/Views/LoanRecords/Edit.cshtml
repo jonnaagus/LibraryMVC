@@ -1,0 +1,54 @@
+﻿@model LibraryMVC.Models.LoanRecord
+
+@{
+    ViewData["Title"] = "Ändra boklån";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white text-center">
+                    <h2>Ändra boklån</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="LoanRecordId" />
+
+                        <div class="mb-3">
+                            <label asp-for="LibraryMemberId" class="form-label">Medlem</label>
+                            <select asp-for="LibraryMemberId" class="form-control" asp-items="ViewBag.LibraryMemberId"></select>
+                            <span asp-validation-for="LibraryMemberId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BookItemId" class="form-label">Bok</label>
+                            <select asp-for="BookItemId" class="form-control" asp-items="ViewBag.BookItemId"></select>
+                            <span asp-validation-for="BookItemId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BorrowDate" class="form-label">Lånedatum</label>
+                            <input asp-for="BorrowDate" class="form-control" />
+                            <span asp-validation-for="BorrowDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <input type="submit" value="Spara" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

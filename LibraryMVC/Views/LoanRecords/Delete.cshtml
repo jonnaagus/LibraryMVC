@@ -1,0 +1,41 @@
+﻿@model LibraryMVC.Models.LoanRecord
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Radera boklån</h1>
+
+<div>
+    <h4>Boklån</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LibraryMemberId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LibraryMemberId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BorrowDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookItem)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookItem.Title)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="LoanRecordId" />
+        <input type="submit" value="Radera" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+    </form>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>

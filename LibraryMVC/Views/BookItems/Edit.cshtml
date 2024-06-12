@@ -1,0 +1,59 @@
+﻿@model LibraryMVC.Models.BookItem
+
+@{
+    ViewData["Title"] = "Ändra bok";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white text-center">
+                    <h2>Ändra bok</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="BookItemId" />
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Titel</label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Writer" class="form-label">Författare</label>
+                            <input asp-for="Writer" class="form-control" />
+                            <span asp-validation-for="Writer" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PublicationDate" class="form-label">Publiceringsdatum</label>
+                            <input asp-for="PublicationDate" class="form-control" />
+                            <span asp-validation-for="PublicationDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="Available" />
+                            <label class="form-check-label" asp-for="Available">Tillgänglig</label>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <input type="submit" value="Spara" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

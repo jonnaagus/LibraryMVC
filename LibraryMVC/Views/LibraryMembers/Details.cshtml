@@ -1,0 +1,62 @@
+﻿@model LibraryMVC.Models.LibraryMember
+
+@{
+    ViewData["Title"] = "Medlemsdetaljer";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white text-center">
+            <h2>@ViewData["Title"]</h2>
+        </div>
+        <div class="card-body bg-light">
+            <div>
+                <h4>Medlemmar</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-3">Medlems ID</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.LibraryMemberId)</dd>
+                    <dt class="col-sm-3">Förnamn</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+                    <dt class="col-sm-3">Efternamn</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+                    <dt class="col-sm-3">Emailadress</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.EmailAddress)</dd>
+                </dl>
+            </div>
+
+            <h4>Befintliga boklån</h4>
+            <table class="table table-striped table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>LåneID</th>
+                        <th>Titel</th>
+                        <th>Lånedatum</th>
+                        <th>Återlämnas senast</th>
+                        <th>Återlämnad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var loanRecord in Model.LoanRecords)
+                    {
+                        <tr>
+                            <td>@loanRecord.LoanRecordId</td>
+                            <td>@loanRecord.BookItem.Title</td>
+                            <td>@loanRecord.BorrowDate.ToShortDateString()</td>
+                            <td>@loanRecord.ReturnDate?.ToShortDateString()</td>
+                            <td>@Html.DisplayFor(modelItem => loanRecord.IsReturned)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.LibraryMemberId" class="btn btn-primary">Ändra</a>
+                <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>

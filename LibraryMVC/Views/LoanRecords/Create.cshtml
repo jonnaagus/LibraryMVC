@@ -1,0 +1,65 @@
+﻿@model LibraryMVC.Models.LoanRecord
+
+@{
+    ViewData["Title"] = "Lägg till nytt boklån";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white text-center">
+                    <h2>Lägg till nytt boklån</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="LibraryMemberId" class="form-label">Medlem</label>
+                            <select asp-for="LibraryMemberId" class="form-control">
+                                <option disabled selected>Välj medlem</option>
+                                @foreach (var member in ViewBag.LibraryMembers)
+                                {
+                                    <option value="@member.LibraryMemberId">@member.FirstName @member.LastName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="LibraryMemberId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BookItemId" class="form-label">Bok</label>
+                            <select asp-for="BookItemId" class="form-control">
+                                <option disabled selected>Välj bok</option>
+                                @foreach (var book in ViewBag.BookItems)
+                                {
+                                    <option value="@book.BookItemId">@book.Title</option>
+                                }
+                            </select>
+                            <span asp-validation-for="BookItemId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BorrowDate" class="form-label">Lånedatum</label>
+                            <input asp-for="BorrowDate" class="form-control" />
+                            <span asp-validation-for="BorrowDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <input type="submit" value="Spara" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

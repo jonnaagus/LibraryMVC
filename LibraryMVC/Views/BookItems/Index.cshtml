@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LibraryMVC.Models.BookItem>
+
+@{
+    ViewData["Title"] = "Bibliotekets böcker";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <table class="table table-striped table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Titel</th>
+                <th>Författare</th>
+                <th>Publikationsdatum</th>
+                <th>Tillgänglig</th>
+                <th>Hantera</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Writer</td>
+                    <td>@item.PublicationDate.ToShortDateString()</td>
+                    <td>
+                        @{
+                            string availabilityIcon = item.Available ? "✔️" : "🔴";
+                        }
+                        @availabilityIcon
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.BookItemId" class="btn btn-primary btn-sm">Ändra</a>
+                        <a asp-action="Details" asp-route-id="@item.BookItemId" class="btn btn-info btn-sm">Detaljer</a>
+                        <a asp-action="Delete" asp-route-id="@item.BookItemId" class="btn btn-danger btn-sm">Radera</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-end">
+        <a asp-action="Create" class="btn btn-success">Lägg till en ny bok</a>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>

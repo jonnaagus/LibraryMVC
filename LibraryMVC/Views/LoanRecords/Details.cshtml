@@ -1,0 +1,35 @@
+﻿@model LibraryMVC.Models.LoanRecord
+
+@{
+    ViewData["Title"] = "Boklånsdetaljer";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white text-center">
+            <h2>@ViewData["Title"]</h2>
+        </div>
+        <div class="card-body bg-light">
+            <div>
+                <h4>Boklån</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-3">Medlems ID</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.LibraryMemberId)</dd>
+                    <dt class="col-sm-3">Lånedatum</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BorrowDate.ToShortDateString())</dd>
+                    <dt class="col-sm-3">Boktitel</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BookItem.Title)</dd>
+                </dl>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.LoanRecordId" class="btn btn-primary">Ändra</a>
+                <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="image-container mt-5">
+    <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+</div>

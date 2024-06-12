@@ -1,0 +1,46 @@
+﻿@model LibraryMVC.Models.BookItem
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Radera böcker från systemet</h1>
+
+<div>
+    <h4>Böcker</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Writer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Writer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PublicationDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublicationDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Available)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Available)
+        </dd>
+    </dl>
+    <div class="image-container mt-5">
+        <img src="~/Images/blomgirlang-gron-1.jpg" alt="flower" class="img-fluid" />
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BookItemId" />
+        <input type="submit" value="Radera" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+    </form>
+</div>
